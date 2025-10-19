@@ -1,0 +1,156 @@
+/* Glitch Effect */
+.glitch {
+    position: relative;
+    animation: glitch 5s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(16px, 9999px, 67px, 0);
+    }
+    25% {
+        clip: rect(78px, 9999px, 12px, 0);
+    }
+    50% {
+        clip: rect(45px, 9999px, 90px, 0);
+    }
+    75% {
+        clip: rect(23px, 9999px, 56px, 0);
+    }
+    100% {
+        clip: rect(89px, 9999px, 34px, 0);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(65px, 9999px, 23px, 0);
+    }
+    25% {
+        clip: rect(12px, 9999px, 78px, 0);
+    }
+    50% {
+        clip: rect(90px, 9999px, 45px, 0);
+    }
+    75% {
+        clip: rect(34px, 9999px, 89px, 0);
+    }
+    100% {
+        clip: rect(56px, 9999px, 16px, 0);
+    }
+}
+
+/* Floating Animation */
+.hero-bg-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-bg-animation::before,
+.hero-bg-animation::after {
+    content: '☠';
+    position: absolute;
+    font-size: 100px;
+    color: rgba(139, 0, 0, 0.1);
+    animation: float 20s infinite;
+}
+
+.hero-bg-animation::before {
+    left: 20%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.hero-bg-animation::after {
+    right: 20%;
+    bottom: 20%;
+    animation-delay: 10s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-50px) rotate(180deg);
+    }
+}
+
+/* Fade In Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(139, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(139, 0, 0, 0);
+    }
+}
+
+.add-to-cart:active {
+    animation: pulse 0.5s;
+}
